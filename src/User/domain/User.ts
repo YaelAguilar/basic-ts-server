@@ -1,10 +1,15 @@
-export class User {
-    id: string;
-    name: string;
-    email: string;
-    createdAt: Date;
+import { UserId } from './UserId';
+import { UserName } from './UserName';
+import { UserEmail } from './UserEmail';
+import { UserCreatedAt } from './UserCreatedAt';
 
-    constructor (id: string, name: string, email: string, createdAt: Date) {
+export class User {
+    id: UserId;
+    name: UserName;
+    email: UserEmail;
+    createdAt: UserCreatedAt;
+
+    constructor (id: UserId, name: UserName, email: UserEmail, createdAt: UserCreatedAt) {
         this.id = id;
         this.name = name;
         this.email = email;

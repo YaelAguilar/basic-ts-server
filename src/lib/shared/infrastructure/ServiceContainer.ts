@@ -7,7 +7,7 @@ import { InMemoryUserRepository } from "../../User/infrastructure/InMemoryUserRe
 
 const userRepository = new InMemoryUserRepository();
 
-export const ServicesContainer = {
+export const ServiceContainer = {
     user: {
         getAll: new UserGetAll(userRepository),
         getOneById: new UserGetOneById(userRepository),

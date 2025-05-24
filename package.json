@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "build": "npx tsc ./src/server.ts --outDir ./dist/",
     "start": "node dist/index.js"
   },
   "keywords": [],

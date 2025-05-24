@@ -1,15 +1,15 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { ServicesContainer } from "../../shared/infrastructure/ServicesContainer";
 import { UserNotFoundError } from "../domain/UserNotFoundError";
 
 export class ExpressUserController {
-    async getAll(req: Request, res: Response) {
+    async getAll(req: Request, res: Response, next: NextFunction) {
         const users = await ServicesContainer.user.getAll.run();
 
         return res.json(users).status(200);
     }
 
-    async getOneById(req: Request, res: Response) {
+    async getOneById(req: Request, res: Response, next: NextFunction) {
         try {
             const user = await ServicesContainer.user.getOneById.run(req.params.id);
 
@@ -23,7 +23,7 @@ export class ExpressUserController {
         }
     }
 
-    async create(req: Request, res: Response) {
+    async create(req: Request, res: Response, next: NextFunction) {
         const { id, name, email, createdAt } = req.body as {
             id: string;
             name: string;
@@ -40,7 +40,7 @@ export class ExpressUserController {
         return res.status(201).send();
     }
 
-    async edit(req: Request, res: Response) {
+    async edit(req: Request, res: Response, next: NextFunction) {
         const { id, name, email, createdAt } = req.body as {
             id: string;
             name: string;
@@ -57,7 +57,7 @@ export class ExpressUserController {
         return res.status(201).send();
     }
 
-    async delete(req: Request, res: Response) {
+    async delete(req: Request, res: Response, next: NextFunction) {
         await ServicesContainer.user.delete.run(req.params.id);
         
         return res.status(204).send();
